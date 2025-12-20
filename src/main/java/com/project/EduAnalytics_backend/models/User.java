@@ -29,7 +29,6 @@ public class User {
     @Column(nullable = false)
     private Role role;
 
-    // O JPA exige construtor vazio
     public User() {
     }
 
