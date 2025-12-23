@@ -56,7 +56,7 @@ public class UserService {
 
     private User.Role resolveRole(String type, String email) {
         if ("PROFESSOR".equalsIgnoreCase(type)) {
-            if (!email.endsWith("@school.br")) {
+            if (!email.endsWith("@university.com")) {
                 throw new IllegalArgumentException(
                         "Only institutional emails addresses can be used as a PROFESSOR's email address.");
             }
