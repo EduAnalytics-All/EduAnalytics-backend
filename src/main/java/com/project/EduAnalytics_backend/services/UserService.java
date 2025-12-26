@@ -18,7 +18,7 @@ public class UserService {
 
     public User register(String name, String email, String password, String type) {
 
-        if (name == null || name.isBlank() || name.trim().length() <2)
+        if (name == null || name.isBlank() || name.trim().length() < 2)
             throw new IllegalArgumentException("Name must have at least 2 characters");
         if (email == null || email.isBlank())
             throw new IllegalArgumentException("Required email");
@@ -29,7 +29,7 @@ public class UserService {
 
         String normalizedEmail = email.trim().toLowerCase();
 
-        if (!normalizedEmail.contains("@")){
+        if (!normalizedEmail.contains("@")) {
             throw new IllegalArgumentException("Email must contain '@'");
         }
 
