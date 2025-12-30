@@ -6,7 +6,7 @@ import com.project.EduAnalytics_backend.models.Grade;
 public record GradeResponseDTO (
         String id,
         String name,
-        Integer grade
+        Float grade
 )
 {
     public  GradeResponseDTO (Grade grade){

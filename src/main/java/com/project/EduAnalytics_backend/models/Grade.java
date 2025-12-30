@@ -23,10 +23,10 @@ public class Grade {
 
     private String name;
 
-    private Integer grade;
+    private Float grade;
 
     public Grade(GradeRequestDTO data){
         this.name = data.name();
-        this.grade = Integer.valueOf(data.grade());
+        this.grade = Float.valueOf(data.grade());
     }
 }

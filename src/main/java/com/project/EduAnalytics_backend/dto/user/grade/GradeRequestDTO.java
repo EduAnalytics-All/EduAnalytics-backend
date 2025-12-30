@@ -10,7 +10,7 @@ public record GradeRequestDTO (
     String name,
 
     @NotNull
-    String grade
+    Float grade
 )
 {
 }
