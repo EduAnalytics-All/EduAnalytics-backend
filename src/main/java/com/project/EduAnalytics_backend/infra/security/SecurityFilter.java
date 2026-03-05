@@ -10,6 +10,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
+import org.springframework.lang.NonNull;
 
 import java.io.IOException;
 
@@ -26,18 +27,21 @@ public class SecurityFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(
-            HttpServletRequest request,
-            HttpServletResponse response,
-            FilterChain filterChain
+            @NonNull HttpServletRequest request,
+            @NonNull HttpServletResponse response,
+            @NonNull FilterChain filterChain
     ) throws ServletException, IOException {
 
         String token = recoverToken(request);
 
+        System.out.println("TOKEN RECEBIDO: " + token);
+
         if (token != null) {
-            String email = tokenService.valdateToken(token);
+            String email = tokenService.validateToken(token);
 
             if (email != null && !email.isBlank()) {
-                UserDetails user = userRepository.findByEmail(email);
+                UserDetails user = userRepository.findByEmail(email)
+                        .orElseThrow(() -> new RuntimeException("User not found"));
 
                 if (user != null) {
                     var authentication =

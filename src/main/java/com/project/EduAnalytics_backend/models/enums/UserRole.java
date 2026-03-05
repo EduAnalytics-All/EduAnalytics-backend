@@ -1,8 +1,8 @@
-package com.project.EduAnalytics_backend.models;
+package com.project.EduAnalytics_backend.models.enums;
 
 public enum UserRole {
-    ADMIN("admin"),
-    USER("user");
+    ADMIN("ROLE_ADMIN"),
+    USER("ROLE_USER");
 
     private String role;
 

@@ -13,20 +13,23 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-
 public class Grade {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-
     private String id;
 
     private String name;
 
     private Float grade;
 
-    public Grade(GradeRequestDTO data){
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    public Grade(GradeRequestDTO data, User user){
         this.name = data.name();
-        this.grade = Float.valueOf(data.grade());
+        this.grade = data.grade();
+        this.user = user;
     }
 }

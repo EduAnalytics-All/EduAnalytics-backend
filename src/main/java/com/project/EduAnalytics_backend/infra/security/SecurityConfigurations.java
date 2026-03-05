@@ -30,6 +30,8 @@ SecurityFilter securityFilter;
                     .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                     .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
                     .requestMatchers(HttpMethod.POST, "/grade").hasRole("ADMIN")
+                    .requestMatchers(HttpMethod.GET, "/grade").hasAnyRole("ADMIN","USER")
+                    .requestMatchers(HttpMethod.GET, "/grade/admin").hasRole("ADMIN")
                     .anyRequest().authenticated()
             )
             .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)

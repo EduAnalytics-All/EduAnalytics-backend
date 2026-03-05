@@ -1,7 +1,14 @@
 package com.project.EduAnalytics_backend.dto.user;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+
 public record AuthenticationDTO(
+        @NotBlank(message = "email is required")
+        @Email(message = "email must be valid")
         String email,
+
+        @NotBlank(message = "password is required")
         String password
 ) {
 }
